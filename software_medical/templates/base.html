@@ -1,0 +1,115 @@
+{% load static i18n %}
+{% load crispy_forms_tags %}
+
+<!DOCTYPE html>
+{% get_current_language as LANGUAGE_CODE %}
+<html lang="{{ LANGUAGE_CODE }}">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>{% block title %}software_medical{% endblock title %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="project for software to doctor sabry">
+    <meta name="author" content="Mansy">
+
+    <link rel="icon" href="{% static 'images/favicons/favicon.ico' %}">
+
+    {% block css %}
+    <!-- Latest compiled and minified Bootstrap CSS -->
+    {% comment %} <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" integrity="sha512-GQGU0fMMi238uA+a/bdWJfpUGKUkBdgfFdgBm72SUQ6BeyWjoY/ton0tEjH+OSH9iP4Dfh+7HM0I9f5eR0L/4w==" crossorigin="anonymous" referrerpolicy="no-referrer" /> {% endcomment %}
+    <!-- Your stuff: Third-party CSS libraries go here -->
+
+    <!-- This file stores project-specific CSS -->
+    {% comment %} <link href="{% static 'css/project.css' %}" rel="stylesheet"> {% endcomment %}
+
+    <!-- this is medical links -->
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,700" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'css/open-iconic-bootstrap.min.css' %} ">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %} ">
+    
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %} ">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %} ">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %} ">
+
+    <link rel="stylesheet" href="{% static 'css/aos.css' %} ">
+
+    <link rel="stylesheet" href="{% static 'css/ionicons.min.css' %} ">
+
+    <link rel="stylesheet" href="{% static 'css/bootstrap-datepicker.css' %} ">
+    <link rel="stylesheet" href="{% static 'css/jquery.timepicker.css' %} ">
+    <link rel="stylesheet" href="{% static 'css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/icomoon.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+    {% endblock %}
+    
+    <!-- Le javascript
+    ================================================== -->
+    {# Placed at the top of the document so pages load faster with defer #}
+    {% block javascript %}
+      <!-- Bootstrap JS -->
+      <script defer src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.min.js" integrity="sha512-OvBgP9A2JBgiRad/mM36mkzXSXaJE9BEIENnVEmeZdITvwT09xnxLtT4twkCa8m/loMbPHsvPl0T8lRGVBwjlQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+      <!-- Your stuff: Third-party javascript libraries go here -->
+
+      <!-- place project specific Javascript in this file -->
+      <script defer src="{% static 'js/project.js' %}"></script>  
+
+     
+        
+
+    {% endblock javascript %}
+
+  </head>
+
+  <body>
+
+ {% include 'includes/navbar.html' %}
+
+      {% block content %}
+      {% endblock content %}
+
+
+    {% block modal %}
+    
+    <div class="modal fade" id="modalAppointment" tabindex="-1" role="dialog" aria-labelledby="modalAppointmentLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalAppointmentLabel">Appointment</h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body">
+
+           <form action="{% url 'appointment' %}" method="POST">
+            {% csrf_token %}
+              {{ form|crispy }}
+              {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+              {% endif %}
+              <button class="btn btn-primary" type="submit">{% translate "Submit" %} &raquo;</button>
+            </form> 
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
+    {% endblock modal %}
+
+    {% block inline_javascript %}
+  
+    {% comment %}
+    Script tags with only code, no src (defer by default). To run
+    with a "defer" so that you run inline code:
+    <script>
+      
+      window.addEventListener('DOMContentLoaded', () => {/* Run whatever you want */});
+    </script>
+    {% endcomment %}
+    {% endblock inline_javascript %}
+   {% include 'includes/footer.html' %}
+ <!-- js project medical -->
