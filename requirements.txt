@@ -56,7 +56,7 @@ drf-spectacular==0.21.2
 env==0.1.0
 filelock==3.4.2
 flower==1.0.0
-fonttools==4.30.0
+fonttools==4.37.1
 future==0.16.0
 gunicorn==20.1.0
 hiredis==2.0.0
