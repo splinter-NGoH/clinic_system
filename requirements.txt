@@ -33,7 +33,7 @@ cryptography==36.0.2
 cycler==0.11.0
 defusedxml==0.7.1
 Deprecated==1.2.13
-dill==0.3.4
+dill==0.3.6
 distlib==0.3.2
 Django==3.2.12
 django-allauth==0.49.0
